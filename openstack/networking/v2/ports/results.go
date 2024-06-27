@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"github.com/gophercloud/gophercloud"
+	"github.com/gophercloud/gophercloud/openstack/networking/v2/extensions/trunk_details"
 	"github.com/gophercloud/gophercloud/pagination"
 )
 
@@ -125,6 +126,9 @@ type Port struct {
 
 	// Timestamp when the port was last updated
 	UpdatedAt time.Time `json:"updated_at"`
+
+	// TrunkDetails contains additional trunking information returned in a ports query.
+	TrunkDetails trunk_details.TrunkDetails `json:"trunk_details"`
 }
 
 func (r *Port) UnmarshalJSON(b []byte) error {
